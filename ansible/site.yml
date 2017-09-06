@@ -65,6 +65,7 @@
         when: enable_chrony | bool }
 
 - name: Apply role collectd
+  become: true
   hosts: collectd
   serial: '{{ serial|default("0") }}'
   roles:
@@ -73,6 +74,7 @@
         when: enable_collectd | bool }
 
 - name: Apply role elasticsearch
+  become: true
   hosts: elasticsearch
   serial: '{{ serial|default("0") }}'
   roles:
@@ -81,6 +83,7 @@
         when: enable_elasticsearch | bool }
 
 - name: Apply role influxdb
+  become: true
   hosts: influxdb
   serial: '{{ serial|default("0") }}'
   roles:
@@ -89,6 +92,7 @@
         when: enable_influxdb | bool }
 
 - name: Apply role telegraf
+  become: true
   hosts:
     - telegraf
   serial: '{{ serial|default("0") }}'
@@ -98,6 +102,7 @@
         when: enable_telegraf | bool }
 
 - name: Apply role haproxy
+  become: true
   hosts:
     - haproxy
   roles:
@@ -106,6 +111,7 @@
         when: enable_haproxy | bool }
 
 - name: Apply role kibana
+  become: true
   hosts: kibana
   serial: '{{ serial|default("0") }}'
   roles:
@@ -114,6 +120,7 @@
         when: enable_kibana | bool }
 
 - name: Apply role memcached
+  become: true
   hosts: memcached
   serial: '{{ serial|default("0") }}'
   roles:
@@ -122,6 +129,7 @@
         when: enable_memcached | bool }
 
 - name: Apply role mariadb
+  become: true
   hosts: mariadb
   roles:
     - { role: mariadb,
@@ -129,6 +137,7 @@
         when: enable_mariadb | bool }
 
 - name: Apply role iscsi
+  become: true
   hosts:
     - iscsid
     - tgtd
@@ -139,6 +148,7 @@
         when: enable_iscsid | bool }
 
 - name: Apply role multipathd
+  become: true
   hosts:
     - multipathd
   serial: '{{ serial|default("0") }}'
@@ -148,6 +158,7 @@
         when: enable_multipathd | bool }
 
 - name: Apply role rabbitmq
+  become: true
   hosts: rabbitmq
   roles:
     - { role: rabbitmq,
@@ -155,6 +166,7 @@
         when: enable_rabbitmq | bool }
 
 - name: Apply role etcd
+  become: true
   hosts: etcd
   serial: '{{ serial|default("0") }}'
   roles:
@@ -163,6 +175,7 @@
         when: enable_etcd | bool }
 
 - name: Apply role keystone
+  become: true
   hosts: keystone
   serial: '{{ serial|default("0") }}'
   roles:
@@ -171,6 +184,7 @@
         when: enable_keystone | bool }
 
 - name: Apply role ceph
+  become: true
   hosts:
     - ceph-mon
     - ceph-osd
@@ -182,6 +196,7 @@
         when: enable_ceph | bool }
 
 - name: Apply role karbor
+  become: true
   hosts: karbor
   serial: '{{ serial|default("0") }}'
   roles:
@@ -190,6 +205,7 @@
         when: enable_karbor | bool }
 
 - name: Apply role swift
+  become: true
   hosts:
     - swift-account-server
     - swift-container-server
@@ -202,6 +218,7 @@
         when: enable_swift | bool }
 
 - name: Apply role glance
+  become: true
   hosts:
     - ceph-mon
     - glance-api
@@ -213,6 +230,7 @@
         when: enable_glance | bool }
 
 - name: Apply role ironic
+  become: true
   hosts:
     - ironic-api
     - ironic-conductor
@@ -225,6 +243,7 @@
         when: enable_ironic | bool }
 
 - name: Apply role cinder
+  become: true
   hosts:
     - ceph-mon
     - cinder-api
@@ -238,6 +257,7 @@
         when: enable_cinder | bool }
 
 - name: Apply role nova
+  become: true
   hosts:
     - ceph-mon
     - compute
@@ -255,6 +275,7 @@
 # (gmmaha): Please do not change the order listed here. The current order is a
 # workaround to fix the bug https://bugs.launchpad.net/kolla/+bug/1546789
 - name: Apply role neutron
+  become: true
   hosts:
     - neutron-server
     - neutron-dhcp-agent
@@ -271,6 +292,7 @@
         when: enable_neutron | bool }
 
 - name: Apply role kuryr
+  become: true
   hosts:
     - compute
   roles:
@@ -279,6 +301,7 @@
         when: enable_kuryr | bool }
 
 - name: Apply role heat
+  become: true
   hosts:
     - heat-api
     - heat-api-cfn
@@ -290,6 +313,7 @@
         when: enable_heat | bool }
 
 - name: Apply role horizon
+  become: true
   hosts:
     - horizon
   serial: '{{ serial|default("0") }}'
@@ -299,6 +323,7 @@
         when: enable_horizon | bool }
 
 - name: Apply role murano
+  become: true
   hosts:
     - murano-api
     - murano-engine
@@ -309,6 +334,7 @@
         when: enable_murano | bool }
 
 - name: Apply role solum
+  become: true
   hosts:
     - solum-api
     - solum-worker
@@ -321,6 +347,7 @@
         when: enable_solum | bool }
 
 - name: Apply role magnum
+  become: true
   hosts:
     - magnum-api
     - magnum-conductor
@@ -331,6 +358,7 @@
         when: enable_magnum | bool }
 
 - name: Apply role mistral
+  become: true
   hosts:
     - mistral-api
     - mistral-engine
@@ -342,6 +370,7 @@
         when: enable_mistral | bool }
 
 - name: Apply role sahara
+  become: true
   hosts:
     - sahara-api
     - sahara-engine
@@ -352,6 +381,7 @@
         when: enable_sahara | bool }
 
 - name: Apply role mongodb
+  become: true
   hosts:
     - mongodb
   serial: '{{ serial|default("0") }}'
@@ -361,6 +391,7 @@
         when: enable_mongodb | bool }
 
 - name: Apply role panko
+  become: true
   hosts: panko-api
   serial: '{{ serial|default("0") }}'
   roles:
@@ -369,6 +400,7 @@
         when: enable_panko | bool }
 
 - name: Apply role manila
+  become: true
   hosts:
     - manila-api
     - manila-data
@@ -381,6 +413,7 @@
         when: enable_manila | bool }
 
 - name: Apply role gnocchi
+  become: true
   hosts:
     - gnocchi-api
     - gnocchi-metricd
@@ -392,6 +425,7 @@
         when: enable_gnocchi | bool }
 
 - name: Apply role ceilometer
+  become: true
   vars_files:
     - "roles/panko/defaults/main.yml"
   hosts:
@@ -404,6 +438,7 @@
         when: enable_ceilometer | bool }
 
 - name: Apply role aodh
+  become: true
   hosts:
     - aodh
   serial: '{{ serial|default("0") }}'
@@ -413,6 +448,7 @@
         when: enable_aodh | bool }
 
 - name: Apply role barbican
+  become: true
   hosts:
     - barbican-api
     - barbican-keystone-listener
@@ -424,6 +460,7 @@
         when: enable_barbican | bool }
 
 - name: Apply role congress
+  become: true
   hosts:
     - congress-api
     - congress-policy-engine
@@ -435,6 +472,7 @@
         when: enable_congress | bool }
 
 - name: Apply role tempest
+  become: true
   hosts:
     - tempest
   serial: '{{ serial|default("0") }}'
@@ -444,6 +482,7 @@
         when: enable_tempest | bool }
 
 - name: Apply role designate
+  become: true
   hosts:
     - designate-api
     - designate-central
@@ -457,6 +496,7 @@
         when: enable_designate | bool }
 
 - name: Apply role rally
+  become: true
   hosts: rally
   serial: '{{ serial|default("0") }}'
   roles:
@@ -465,6 +505,7 @@
         when: enable_rally | bool }
 
 - name: Apply role vmtp
+  become: true
   hosts:
     - vmtp
   serial: '{{ serial|default("0") }}'
@@ -474,6 +515,7 @@
         when: enable_vmtp | bool }
 
 - name: Apply role trove
+  become: true
   hosts:
     - trove-api
     - trove-conductor
@@ -485,6 +527,7 @@
         when: enable_trove | bool }
 
 - name: Apply role watcher
+  become: true
   hosts:
     - watcher-api
     - watcher-engine
@@ -496,6 +539,7 @@
         when: enable_watcher | bool }
 
 - name: Apply role grafana
+  become: true
   hosts:
     - grafana
   serial: '{{ serial|default("0") }}'
@@ -505,6 +549,7 @@
         when: enable_grafana | bool }
 
 - name: Apply role cloudkitty
+  become: true
   hosts:
     - cloudkitty-api
     - cloudkitty-processor
@@ -515,6 +560,7 @@
         when: enable_cloudkitty | bool }
 
 - name: Apply role freezer
+  become: true
   hosts:
     - freezer-api
   serial: '{{ serial|default("0") }}'
@@ -524,6 +570,7 @@
         when: enable_freezer | bool }
 
 - name: Apply role senlin
+  become: true
   hosts:
     - senlin-api
     - senlin-engine
@@ -534,6 +581,7 @@
         when: enable_senlin | bool }
 
 - name: Apply role searchlight
+  become: true
   hosts:
     - searchlight-api
     - searchlight-listener
@@ -544,6 +592,7 @@
         when: enable_searchlight | bool }
 
 - name: Apply role tacker
+  become: true
   hosts: tacker
   serial: '{{ serial|default("0") }}'
   roles:
@@ -552,6 +601,7 @@
         when: enable_tacker | bool }
 
 - name: Apply role octavia
+  become: true
   hosts:
     - octavia-api
     - octavia-health-manager
