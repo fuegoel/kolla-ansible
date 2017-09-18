@@ -9,6 +9,7 @@
 
 - name: Create config directories on the provisioning node
   local_action: file
+  run_once: true
   args:
     path: "{{ node_config_directory }}/{{ item }}"
     state: directory
@@ -52,3 +53,4 @@
   assemble:
     src: "{{ node_config_directory }}/certificates/private"
     dest: "{{ node_config_directory }}/certificates/haproxy.pem"
+    remote_src: false
