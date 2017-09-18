@@ -1,6 +1,7 @@
 ---
 - name: Ensuring config directories exist
-  file:
+  local_action: file
+  args:
     path: "{{ node_config_directory }}/{{ item }}"
     state: "directory"
     recurse: yes
@@ -8,19 +9,19 @@
     - "certificates/private"
 
 - name: Creating SSL configuration file
-  template:
+  local_action: template
     src: "{{ item }}.j2"
     dest: "{{ node_config_directory }}/certificates/{{ item }}"
   with_items:
     - "openssl-kolla.cnf"
 
 - name: Creating Key
-  command: creates="{{ item }}" openssl genrsa -out {{ item }}
+  local_action: command creates="{{ item }}" openssl genrsa -out {{ item }}
   with_items:
     - "{{ node_config_directory }}/certificates/private/haproxy.key"
 
 - name: Creating Server Certificate
-  command: creates="{{ item }}" openssl req -new -nodes -sha256 -x509 \
+  local_action: command creates="{{ item }}" openssl req -new -nodes -sha256 -x509 \
     -subj "/C=US/ST=NC/L=RTP/O=kolla/CN={{ kolla_external_fqdn }}" \
     -config {{ node_config_directory }}/certificates/openssl-kolla.cnf \
     -days 3650 \
