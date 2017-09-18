@@ -10,6 +10,7 @@
 
 - name: Creating SSL configuration file
   local_action: template
+  args:
     src: "{{ item }}.j2"
     dest: "{{ node_config_directory }}/certificates/{{ item }}"
   with_items:
